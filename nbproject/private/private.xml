@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/Users/sr_hosseini/Projects/bms2/config/app.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/vendor/tymon/jwt-auth/src/Providers/User/EloquentUserAdapter.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/vendor/tymon/jwt-auth/src/Providers/User/UserInterface.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/database/seeds/UserTableSeeder.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/app/Entities/User.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/app/Api/V1/Controllers/LoginController.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/config/jwt.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/app/Helpers/Auth/DoctrineUserAdapter.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/vendor/tymon/jwt-auth/src/Providers/JWTAuthServiceProvider.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/docker-compose.yml</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/database/factories/ModelFactory.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/app/Helpers/HelperTraits/InstanceMaker.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/routes/api.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/config/auth.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/vendor/laravel/framework/src/Illuminate/Foundation/helpers.php</file>
+            <file>file:/Users/sr_hosseini/Projects/bms2/tests/Functional/Api/V1/Controllers/ForgotPasswordControllerTest.php</file>
+        </group>
+    </open-files>
+</project-private>
