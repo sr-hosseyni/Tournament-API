@@ -14,7 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+//        'guard' => 'web',
+        'guard' => 'api',
         'passwords' => 'users',
     ],
 
@@ -42,7 +43,8 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+//            'driver' => 'token',
+            'driver' => 'jwt',
             'provider' => 'users',
         ],
     ],
@@ -70,10 +72,14 @@ return [
 //            'model' => BMS\User::class,
 //        ],
 
-        'users' => [
-            'driver' => 'doctrine',
-            'model' => BMS\Entities\User::class,
-        ],
+//        'users' => [
+//            'driver' => 'doctrine',
+//            'model' => BMS\Entities\User::class,
+//        ],
+
+            'users' => [
+                'driver' => 'api',
+            ],
 
         // 'users' => [
         //     'driver' => 'database',

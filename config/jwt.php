@@ -134,7 +134,8 @@ return [
         */
 
 //        'user' => 'Tymon\JWTAuth\Providers\User\EloquentUserAdapter',
-        'user' => 'BMS\Helpers\Auth\DoctrineUserAdapter',
+//        'user' => 'BMS\Helpers\Auth\DoctrineUserAdapter',
+        'user' => BMS\Adapters\UserAdapter::class,
 
         /*
         |--------------------------------------------------------------------------
@@ -156,7 +157,8 @@ return [
         |
         */
 
-        'auth' => 'Tymon\JWTAuth\Providers\Auth\IlluminateAuthAdapter',
+//        'auth' => 'Tymon\JWTAuth\Providers\Auth\IlluminateAuthAdapter',
+        'auth' => BMS\Adapters\AuthAdapter::class,
 
         /*
         |--------------------------------------------------------------------------
