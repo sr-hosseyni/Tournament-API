@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-/bms/serve.sh bms.dev /bms/public
+bash -c "/bms/serve.sh bms.dev /bms/public"

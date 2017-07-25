@@ -3,7 +3,7 @@
 # Laravel homestead original provisioning script
 # https://github.com/laravel/settler
 
-# Update Package List
+# Update Package List 
 apt-get update
 apt-get upgrade -y
 
