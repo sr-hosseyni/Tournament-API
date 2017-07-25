@@ -15,3 +15,5 @@ RUN ./provision.sh
 
 EXPOSE 80 22 35729 9876
 CMD ["/usr/bin/supervisord"]
+
+RUN ./vhost.sh
