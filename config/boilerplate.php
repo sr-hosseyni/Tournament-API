@@ -5,8 +5,9 @@ return [
     'sign_up' => [
         'release_token' => env('SIGN_UP_RELEASE_TOKEN'),
         'validation_rules' => [
-            'name' => 'required',
+            'first_name' => 'required',
             'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]
     ],
@@ -18,19 +19,19 @@ return [
         ]
     ],
 
-    'forgot_password' => [
-        'validation_rules' => [
-            'email' => 'required|email'
-        ]
-    ],
-
-    'reset_password' => [
-        'release_token' => env('PASSWORD_RESET_RELEASE_TOKEN', false),
-        'validation_rules' => [
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed'
-        ]
-    ]
+//    'forgot_password' => [
+//        'validation_rules' => [
+//            'email' => 'required|email'
+//        ]
+//    ],
+//
+//    'reset_password' => [
+//        'release_token' => env('PASSWORD_RESET_RELEASE_TOKEN', false),
+//        'validation_rules' => [
+//            'token' => 'required',
+//            'email' => 'required|email',
+//            'password' => 'required|confirmed'
+//        ]
+//    ]
 
 ];

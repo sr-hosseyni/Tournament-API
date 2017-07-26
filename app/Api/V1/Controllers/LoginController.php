@@ -2,13 +2,14 @@
 
 namespace BMS\Api\V1\Controllers;
 
-use Symfony\Component\HttpKernel\Exception\HttpException;
-use Tymon\JWTAuth\JWTAuth;
+use BMS\API\V1\Controllers\APIController;
 use BMS\Api\V1\Requests\LoginRequest;
-use Tymon\JWTAuth\Exceptions\JWTException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth;
 
-class LoginController extends \BMS\API\V1\Controllers\APIController
+class LoginController extends APIController
 {
     public function login(LoginRequest $request, JWTAuth $JWTAuth)
     {

@@ -7,11 +7,11 @@ use BMS\Entities\User;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Routing\Controller;
 use App;
 use JWTAuth;
 
-class APIController extends BaseController
+class APIController extends Controller
 {
 
     use Helpers,
