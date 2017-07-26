@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entities\Filters;
+namespace BMS\Entities\Filters;
 
 use BMS\Entities\Traits\Deletable;
 use Doctrine\ORM\Mapping\ClassMetadata;

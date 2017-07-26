@@ -2,7 +2,8 @@
 
 namespace BMS\API\V1\Controllers;
 
-use BMS\API\V1\Entities\User;
+//use BMS\API\V1\Entities\User;
+use BMS\Entities\User;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;

@@ -12,13 +12,14 @@ services:
             - ./:/bms
         env_file: ./.env
         hostname: bms-web
+#        command: bash -c "/serve.sh bms.dev /bms/public"
 
     mariadb:
         image: tutum/mariadb
         restart: always
         ports:
             - "33060:3306"
-        environment:
+#        environment:
 #            MARIADB_USER: root # cannot be changed ( for info. only )
 #            MARIADB_PASS: secret
         container_name: bms_db

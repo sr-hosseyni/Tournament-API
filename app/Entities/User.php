@@ -9,8 +9,8 @@ use LaravelDoctrine\ORM\Auth\Authenticatable;
 /**
  * User
  *
- * @ORM\Table(name="tb_usr_user")
- * @ORM\Entity
+ * ORM\Table(name="tb_usr_user")
+ * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks
  */
 //class User implements AuthenticatableInterface
@@ -26,35 +26,35 @@ class User implements AuthenticatableInterface
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="usr_first_name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="usr_last_name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @var string
      *
      * @ORM\Column(name="usr_email", type="string", length=255, precision=0, scale=0, nullable=true, unique=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="usr_username", type="string", length=255, precision=0, scale=0, nullable=true, unique=true)
      */
-    private $username;
+    protected $username;
 
     /**
      * @var string
@@ -62,21 +62,21 @@ class User implements AuthenticatableInterface
      *
      * @ORM\Column(name="usr_password", type="string", length=60, precision=0, scale=0, nullable=false, unique=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="usr_create_date", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
-    private $createdDate;
+    protected $createdDate;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="usr_delete_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
      */
-    private $deleteDate;
+    protected $deleteDate;
 
     /**
      * Get id

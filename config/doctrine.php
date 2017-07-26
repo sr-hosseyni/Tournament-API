@@ -51,7 +51,9 @@ return [
                 'listeners'   => [],
                 'subscribers' => []
             ],
-            'filters'       => [],
+            'filters'       => [
+                'deletable' => \BMS\Entities\Filters\DeletableFilter::class,
+            ],
             /*
             |--------------------------------------------------------------------------
             | Doctrine mapping types

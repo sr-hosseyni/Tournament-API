@@ -1,8 +1,7 @@
 {
-    "name": "francescomalatesta/laravel-api-boilerplate-jwt",
-    "description": "An API Boilerplate to create a ready-to-use REST API in seconds.",
-    "keywords": ["laravel", "api", "boilerplate", "jwt"],
-    "license": "MIT",
+    "name": "bms",
+    "description": "bms",
+    "keywords": ["bms"],
     "type": "project",
     "require": {
         "php": ">=5.6.4",
@@ -25,7 +24,10 @@
         ],
         "psr-4": {
             "BMS\\": "app/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

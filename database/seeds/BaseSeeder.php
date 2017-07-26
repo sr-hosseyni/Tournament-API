@@ -15,6 +15,4 @@ abstract class BaseSeeder extends Seeder
     {
         $this->em = $em;
     }
-
-
 }
