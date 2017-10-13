@@ -13,7 +13,6 @@ use LaravelDoctrine\ORM\Auth\Authenticatable;
  * @ORM\MappedSuperclass
  * @ORM\HasLifecycleCallbacks
  */
-//class User implements AuthenticatableInterface
 class User implements AuthenticatableInterface
 {
 //    use Authenticatable;

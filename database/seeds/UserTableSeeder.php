@@ -11,7 +11,7 @@ class UserTableSeeder extends BaseSeeder
      */
     public function run()
     {
-        $user = User::getInstance()
+        $user = BMS\API\V1\Entities\User::getInstance()
             ->setEmail('foo.bar@gmail.com')
             ->setFirstName('fname')
             ->setUsername('foo_bar')
