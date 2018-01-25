@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Repositories;
+namespace Tournament\Repositories;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\EntityManager;

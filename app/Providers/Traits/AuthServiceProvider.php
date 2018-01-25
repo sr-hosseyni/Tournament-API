@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Providers\Traits;
+namespace Tournament\Providers\Traits;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;

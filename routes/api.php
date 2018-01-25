@@ -7,11 +7,11 @@ $api = app(Router::class);
 
 $api->version('v1', function (Router $api) {
     $api->group(['prefix' => 'auth'], function(Router $api) {
-        $api->post('signup', 'BMS\\Api\\V1\\Controllers\\SignUpController@signUp');
-        $api->post('login', 'BMS\\Api\\V1\\Controllers\\LoginController@login');
+        $api->post('signup', 'Tournament\\Api\\V1\\Controllers\\SignUpController@signUp');
+        $api->post('login', 'Tournament\\Api\\V1\\Controllers\\LoginController@login');
 
-        $api->post('recovery', 'BMS\\Api\\V1\\Controllers\\ForgotPasswordController@sendResetEmail');
-        $api->post('reset', 'BMS\\Api\\V1\\Controllers\\ResetPasswordController@resetPassword');
+        $api->post('recovery', 'Tournament\\Api\\V1\\Controllers\\ForgotPasswordController@sendResetEmail');
+        $api->post('reset', 'Tournament\\Api\\V1\\Controllers\\ResetPasswordController@resetPassword');
     });
 
     $api->group(['middleware' => 'jwt.auth'], function(Router $api) {
@@ -32,8 +32,19 @@ $api->version('v1', function (Router $api) {
     });
 
     $api->get('hello', function() {
+
+
         return response()->json([
             'message' => 'This is a simple example of item returned by your APIs. Everyone can see it.'
         ]);
     });
+
+    $api->resource('team', Tournament\API\V1\Controllers\TeamController::class);
+    $api->resource('match', Tournament\API\V1\Controllers\MatchController::class);
+    $api->resource('match-fact', Tournament\API\V1\Controllers\MatchFactController::class);
+    $api->resource('user', Tournament\API\V1\Controllers\UserController::class);
+    $api->resource('profile', Tournament\API\V1\Controllers\ProfileController::class);
+    $api->resource('invitation', Tournament\API\V1\Controllers\InvitationController::class);
+    $api->resource('tournament', Tournament\API\V1\Controllers\TournamentController::class);
+    $api->resource('invitaion-mail', Tournament\API\V1\Controllers\InvitationMailController::class);
 });

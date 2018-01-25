@@ -1,8 +1,8 @@
 <?php
 
-namespace BMS\Adapters;
+namespace Tournament\Adapters;
 
-use BMS\Guards\JWTGuard;
+use Tournament\Guards\JWTGuard;
 use Illuminate\Auth\AuthManager;
 use Tymon\JWTAuth\Providers\Auth\AuthInterface;
 

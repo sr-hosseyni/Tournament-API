@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
     Illuminate\Contracts\Http\Kernel::class,
-    BMS\Http\Kernel::class
+    Tournament\Http\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
-    BMS\Console\Kernel::class
+    Tournament\Console\Kernel::class
 );
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    BMS\Exceptions\Handler::class
+    Tournament\Exceptions\Handler::class
 );
 
 /*

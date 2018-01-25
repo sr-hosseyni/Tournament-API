@@ -69,12 +69,12 @@ return [
     'providers' => [
 //        'users' => [
 //            'driver' => 'eloquent',
-//            'model' => BMS\User::class,
+//            'model' => Tournament\User::class,
 //        ],
 
 //        'users' => [
 //            'driver' => 'doctrine',
-//            'model' => BMS\Entities\User::class,
+//            'model' => Tournament\Entities\User::class,
 //        ],
 
             'users' => [

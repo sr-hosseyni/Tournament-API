@@ -1,5 +1,5 @@
 <?php
-namespace BMS\Helpers\HelperTraits;
+namespace Tournament\Helpers\HelperTraits;
 
 /**
  * Description of InstanceMaker

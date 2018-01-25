@@ -1,11 +1,12 @@
 <?php
 
-namespace BMS\API\V1\Repositories;
+namespace Tournament\API\V1\Repositories;
 
-use BMS\Repositories\Repository;
+use Tournament\API\V1\Entities\User;
+use Tournament\Repositories\Repository;
 
 class UserRepository extends Repository
 {
 
-    protected $entity = \BMS\API\V1\Entities\User::class;
+    protected $entity = User::class;
 }

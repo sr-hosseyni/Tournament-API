@@ -1,8 +1,8 @@
 <?php
 
-namespace BMS\Entities\Filters;
+namespace Tournament\Entities\Filters;
 
-use BMS\Entities\Traits\Deletable;
+use Tournament\Entities\Traits\Deletable;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Query\Filter\SQLFilter;
 

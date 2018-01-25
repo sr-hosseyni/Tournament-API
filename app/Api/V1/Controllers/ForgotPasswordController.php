@@ -1,11 +1,11 @@
 <?php
 
-namespace BMS\Api\V1\Controllers;
+namespace Tournament\Api\V1\Controllers;
 
-use BMS\User;
-use BMS\Http\Controllers\Controller;
+use Tournament\User;
+use Tournament\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
-use BMS\Api\V1\Requests\ForgotPasswordRequest;
+use Tournament\Api\V1\Requests\ForgotPasswordRequest;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Guards;
+namespace Tournament\Guards;
 
 use Illuminate\Auth\TokenGuard;
 use Illuminate\Contracts\Auth\UserProvider;

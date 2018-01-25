@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Http\Controllers;
+namespace Tournament\Http\Controllers;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

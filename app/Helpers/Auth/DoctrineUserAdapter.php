@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Helpers\Auth;
+namespace Tournament\Helpers\Auth;
 
 use Doctrine\ORM\EntityManager;
 use Tymon\JWTAuth\Providers\User\UserInterface;
@@ -32,7 +32,7 @@ class DoctrineUserAdapter implements UserInterface
 
     public function getBy($key, $value)
     {
-//        return $this->em->getRepository(\BMS\Entities\User::class)->findOneBy([$key => $value]);
+//        return $this->em->getRepository(\Tournament\Entities\User::class)->findOneBy([$key => $value]);
         return $this->em->getRepository(get_class($this->user))->findOneBy([$key => $value]);
     }
 }

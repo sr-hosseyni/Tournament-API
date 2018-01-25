@@ -5,9 +5,9 @@
  * and open the template in the editor.
  */
 
-namespace BMS\Providers;
+namespace Tournament\Providers;
 
-use BMS\Security\JWTAuth;
+use Tournament\Security\JWTAuth;
 use Tymon\JWTAuth\Providers\JWTAuthServiceProvider as BaseJWTAuthServiceProvider;
 
 /**

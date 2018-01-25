@@ -1,9 +1,9 @@
 <?php
 
-namespace BMS\Api\V1\Controllers;
+namespace Tournament\Api\V1\Controllers;
 
-use BMS\API\V1\Controllers\APIController;
-use BMS\Api\V1\Requests\LoginRequest;
+use Tournament\API\V1\Controllers\APIController;
+use Tournament\Api\V1\Requests\LoginRequest;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Tymon\JWTAuth\Exceptions\JWTException;

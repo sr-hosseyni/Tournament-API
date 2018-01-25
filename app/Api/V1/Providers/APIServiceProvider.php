@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\API\V1\Providers;
+namespace Tournament\API\V1\Providers;
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Support\ServiceProvider;

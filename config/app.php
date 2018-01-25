@@ -168,18 +168,18 @@ return [
          */
 
 //        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
-        \BMS\Providers\JWTAuthServiceProvider::class,
+        \Tournament\Providers\JWTAuthServiceProvider::class,
         Dingo\Api\Provider\LaravelServiceProvider::class,
-        Barryvdh\Cors\ServiceProvider::class,
+//        Barryvdh\Cors\ServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
-        BMS\Providers\AppServiceProvider::class,
-        BMS\Providers\AuthServiceProvider::class,
-        // BMS\Providers\BroadcastServiceProvider::class,
-        BMS\Providers\EventServiceProvider::class,
-        BMS\Providers\RouteServiceProvider::class,
+        Tournament\Providers\AppServiceProvider::class,
+        Tournament\Providers\AuthServiceProvider::class,
+        // Tournament\Providers\BroadcastServiceProvider::class,
+        Tournament\Providers\EventServiceProvider::class,
+        Tournament\Providers\RouteServiceProvider::class,
 
         LaravelDoctrine\ORM\DoctrineServiceProvider::class,
     ],

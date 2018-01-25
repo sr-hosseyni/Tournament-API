@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Http;
+namespace Tournament\Http;
 
 use Tymon\JWTAuth\Middleware\RefreshToken;
 use Tymon\JWTAuth\Middleware\GetUserFromToken;
@@ -26,11 +26,11 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \BMS\Http\Middleware\EncryptCookies::class,
+            \Tournament\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \BMS\Http\Middleware\VerifyCsrfToken::class,
+            \Tournament\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 
@@ -52,7 +52,7 @@ class Kernel extends HttpKernel
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \BMS\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \Tournament\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         'jwt.auth' => GetUserFromToken::class,

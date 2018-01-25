@@ -5,7 +5,7 @@
  * and open the template in the editor.
  */
 
-namespace BMS\Security;
+namespace Tournament\Security;
 
 use Tymon\JWTAuth\JWTAuth as BaseJWTAuth;
 

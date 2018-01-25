@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Entities\Traits;
+namespace Tournament\Entities\Traits;
 
 use Doctrine\ORM\Mapping AS ORM;
 

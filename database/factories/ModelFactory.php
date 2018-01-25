@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(\BMS\Entities\User::class, function (Faker\Generator $faker) {
+$factory->define(\Tournament\Entities\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

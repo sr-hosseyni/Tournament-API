@@ -5,7 +5,8 @@ return [
     'sign_up' => [
         'release_token' => env('SIGN_UP_RELEASE_TOKEN'),
         'validation_rules' => [
-            'first_name' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
             'email' => 'required|email',
             'username' => 'required',
             'password' => 'required'

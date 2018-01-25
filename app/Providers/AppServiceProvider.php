@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Providers;
+namespace Tournament\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

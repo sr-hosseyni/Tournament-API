@@ -1,36 +1,27 @@
 <?php
 
-namespace App\API\V1\Transformers;
+namespace Tournament\API\V1\Transformers;
 
 use App\API\V1\Entities\User as Entity;
-use App\Transformers\Transformer;
+use Tournament\API\V1\Transformers\BaseTransformer;
+use Tournament\Entities\User;
 
-class UserTransformer extends Transformer
+class UserTransformer extends BaseTransformer
 {
-
     /**
      * @param Entity $entity
      *
      * @return array
      */
-    protected $availableIncludes = array();
-
-    /**
-     * @param Entity $entity
-     *
-     * @return array
-     */
-    public function transform(Entity $entity)
+    public function transform(User $entity)
     {
-        if ($this->verifyItem($entity) == TRUE) {
-            return array(
-                'id' => $entity->getId(),
-                'email' => $entity->getEmail(),
-            );
-        } else {
-            return array();
-        }
+        return [
+            'id' => $entity->getId(),
+            'fname' => $entity->getFname(),
+            'lname' => $entity->getLname(),
+            'email' => $entity->getEmail(),
+        ];
     }
 
-    
+
 }

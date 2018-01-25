@@ -26,7 +26,7 @@ return [
             'meta'          => env('DOCTRINE_METADATA', 'annotations'),
             'connection'    => env('DB_CONNECTION', 'mysql'),
             'namespaces'    => [
-                'BMS'
+                'Tournament'
             ],
             'paths'         => [
                 base_path('app/Entities'),
@@ -52,7 +52,7 @@ return [
                 'subscribers' => []
             ],
             'filters'       => [
-                'deletable' => \BMS\Entities\Filters\DeletableFilter::class,
+                'deletable' => \Tournament\Entities\Filters\DeletableFilter::class,
             ],
             /*
             |--------------------------------------------------------------------------

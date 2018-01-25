@@ -1,9 +1,9 @@
 <?php
 
-namespace BMS\API\V1\Controllers;
+namespace Tournament\API\V1\Controllers;
 
-//use BMS\API\V1\Entities\User;
-use BMS\Entities\User;
+//use Tournament\API\V1\Entities\User;
+use Tournament\Entities\User;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -19,7 +19,7 @@ class APIController extends Controller
 
     public function __construct()
     {
-        App::register(\BMS\API\V1\Providers\APIServiceProvider::class);
+        App::register(\Tournament\API\V1\Providers\APIServiceProvider::class);
     }
 
     /**
@@ -59,4 +59,36 @@ class APIController extends Controller
             throw new \Dingo\Api\Exception\ValidationHttpException($validator->failed());
         }
     }
+
+    protected function apiResponseSucces($data, \League\Fractal\TransformerAbstract $transformer = null)
+    {
+        if ($transformer) {
+            $data = $transformer->transform($data);
+        }
+
+//        return response()->json([
+//            'data' => $data
+//        ]);
+        return response()->json($data);
+    }
+
+    protected function apiResponseError($message = 'Bad request', $status_code = 400)
+    {
+        return response()->json([
+            'message' => $message,
+            'status_code' => $status_code
+        ], $status_code);
+//        return response()->json([
+//            'error' => [
+//                'message' => $message,
+//                'status' => $status_code
+//            ]],
+//            $status_code);
+    }
+
+    /**
+     *
+     * @param string $className
+     * @return Repository
+     */
 }

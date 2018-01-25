@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Api\V1\Requests;
+namespace Tournament\Api\V1\Requests;
 
 use Config;
 use Dingo\Api\Http\FormRequest;

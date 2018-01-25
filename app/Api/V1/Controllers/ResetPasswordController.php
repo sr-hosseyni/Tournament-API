@@ -1,13 +1,13 @@
 <?php
 
-namespace BMS\Api\V1\Controllers;
+namespace Tournament\Api\V1\Controllers;
 
 use Config;
-use BMS\User;
+use Tournament\User;
 use Tymon\JWTAuth\JWTAuth;
-use BMS\Http\Controllers\Controller;
+use Tournament\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
-use BMS\Api\V1\Requests\ResetPasswordRequest;
+use Tournament\Api\V1\Requests\ResetPasswordRequest;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ResetPasswordController extends Controller

@@ -1,11 +1,11 @@
 <?php
 
-namespace BMS\API\V1\Providers;
+namespace Tournament\API\V1\Providers;
 
-use BMS\API\V1\Entities\User;
-use BMS\API\V1\Repositories\UserRepository;
-use BMS\Entities\Traits\Authenticatable as AuthenticatableTrait;
-use BMS\Providers\Traits\AuthServiceProvider as AuthServiceProviderTrait;
+use Tournament\API\V1\Entities\User;
+use Tournament\API\V1\Repositories\UserRepository;
+use Tournament\Entities\Traits\Authenticatable as AuthenticatableTrait;
+use Tournament\Providers\Traits\AuthServiceProvider as AuthServiceProviderTrait;
 use Dingo\Api\Auth\Provider\Authorization;
 use Illuminate\Contracts\Auth\UserProvider;
 use Illuminate\Contracts\Auth\Authenticatable;

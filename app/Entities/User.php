@@ -1,81 +1,95 @@
 <?php
-namespace BMS\Entities;
+namespace Tournament\Entities;
 
-use BMS\Helpers\HelperTraits\InstanceMaker;
 use Doctrine\ORM\Mapping as ORM;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableInterface;
-use LaravelDoctrine\ORM\Auth\Authenticatable;
+use Tournament\Entities\Traits\Deletable;
+use Tournament\Helpers\HelperTraits\InstanceMaker;
 
 /**
  * User
  *
- * ORM\Table(name="tb_usr_user")
- * @ORM\MappedSuperclass
+ * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="user_email_unique", columns={"email"})})
+ * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  */
 class User implements AuthenticatableInterface
 {
-//    use Authenticatable;
     use InstanceMaker;
+    use Deletable;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="usr_id", type="integer")
+     * @ORM\Column(name="id", type="integer", precision=0, scale=0, nullable=false, unique=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_first_name", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="fname", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $firstName;
+    private $fname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_last_name", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="lname", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $lastName;
+    private $lname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_email", type="string", length=255, precision=0, scale=0, nullable=true, unique=true)
+     * @ORM\Column(name="nname", type="string", length=255, precision=0, scale=0, nullable=true, unique=false)
      */
-    protected $email;
+    private $nname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="usr_username", type="string", length=255, precision=0, scale=0, nullable=true, unique=true)
+     * @ORM\Column(name="username", type="string", length=255, precision=0, scale=0, nullable=true, unique=true)
      */
     protected $username;
 
     /**
      * @var string
-     * SHA-256
      *
-     * @ORM\Column(name="usr_password", type="string", length=60, precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="email", type="string", length=255, precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $password;
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=60, precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="remember_token", type="string", length=100, precision=0, scale=0, nullable=true, unique=false)
+     */
+    private $rememberToken;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="usr_create_date", type="datetime", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="created_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $createdDate;
+    private $createdAt;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="usr_delete_date", type="datetime", precision=0, scale=0, nullable=true, unique=false)
+     * @ORM\Column(name="updated_at", type="datetime", precision=0, scale=0, nullable=false, unique=false)
      */
-    protected $deleteDate;
+    private $updatedAt;
+
 
     /**
      * Get id
@@ -88,51 +102,97 @@ class User implements AuthenticatableInterface
     }
 
     /**
-     * Set firstName
+     * Set fname
      *
-     * @param string $firstName
+     * @param string $fname
      *
      * @return User
      */
-    public function setFirstName($firstName)
+    public function setFname($fname)
     {
-        $this->firstName = $firstName;
+        $this->fname = $fname;
 
         return $this;
     }
 
     /**
-     * Get firstName
+     * Get fname
      *
      * @return string
      */
-    public function getFirstName()
+    public function getFname()
     {
-        return $this->firstName;
+        return $this->fname;
     }
 
     /**
-     * Set lastName
+     * Set lname
      *
-     * @param string $lastName
+     * @param string $lname
      *
      * @return User
      */
-    public function setLastName($lastName)
+    public function setLname($lname)
     {
-        $this->lastName = $lastName;
+        $this->lname = $lname;
 
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get lname
      *
      * @return string
      */
-    public function getLastName()
+    public function getLname()
     {
-        return $this->lastName;
+        return $this->lname;
+    }
+
+    /**
+     * Set nname
+     *
+     * @param string $nname
+     *
+     * @return User
+     */
+    public function setNname($nname)
+    {
+        $this->nname = $nname;
+
+        return $this;
+    }
+
+    /**
+     * Get nname
+     *
+     * @return string
+     */
+    public function getNname()
+    {
+        return $this->nname;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return User
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+        return $this;
+    }
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     /**
@@ -160,30 +220,6 @@ class User implements AuthenticatableInterface
     }
 
     /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
      * Set password
      *
      * @param string $password
@@ -208,51 +244,75 @@ class User implements AuthenticatableInterface
     }
 
     /**
-     * Set createdDate
+     * Set rememberToken
      *
-     * @param \DateTime $createdDate
+     * @param string $rememberToken
      *
      * @return User
      */
-    public function setCreatedDate($createdDate)
+    public function setRememberToken($rememberToken)
     {
-        $this->createdDate = $createdDate;
+        $this->rememberToken = $rememberToken;
 
         return $this;
     }
 
     /**
-     * Get createdDate
+     * Get rememberToken
      *
-     * @return \DateTime
+     * @return string
      */
-    public function getCreatedDate()
+    public function getRememberToken()
     {
-        return $this->createdDate;
+        return $this->rememberToken;
     }
 
     /**
-     * Set deleteDate
+     * Set createdAt
      *
-     * @param \DateTime $deleteDate
+     * @param \DateTime $createdAt
      *
      * @return User
      */
-    public function setDeleteDate($deleteDate)
+    public function setCreatedAt($createdAt)
     {
-        $this->deleteDate = $deleteDate;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     /**
-     * Get deleteDate
+     * Get createdAt
      *
      * @return \DateTime
      */
-    public function getDeleteDate()
+    public function getCreatedAt()
     {
-        return $this->deleteDate;
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 
     /**
@@ -260,7 +320,8 @@ class User implements AuthenticatableInterface
      */
     public function prePersist()
     {
-        $this->createdDate = new \DateTime();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     /**
@@ -268,7 +329,9 @@ class User implements AuthenticatableInterface
      */
     public function preUpdate()
     {
+        $this->updatedAt = new \DateTime();
     }
+
 
     public function getAuthIdentifier()
     {
@@ -285,17 +348,7 @@ class User implements AuthenticatableInterface
         return $this->password;
     }
 
-    public function getRememberToken()
-    {
-
-    }
-
     public function getRememberTokenName()
-    {
-
-    }
-
-    public function setRememberToken($value)
     {
 
     }

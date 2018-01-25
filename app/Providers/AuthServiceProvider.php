@@ -1,8 +1,8 @@
 <?php
 
-namespace BMS\Providers;
+namespace Tournament\Providers;
 
-use BMS\Guards\JWTGuard;
+use Tournament\Guards\JWTGuard;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Auth;

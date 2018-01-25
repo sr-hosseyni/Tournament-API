@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Exceptions;
+namespace Tournament\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

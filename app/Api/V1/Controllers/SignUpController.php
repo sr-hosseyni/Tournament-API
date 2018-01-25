@@ -1,11 +1,11 @@
 <?php
 
-namespace BMS\Api\V1\Controllers;
+namespace Tournament\Api\V1\Controllers;
 
-use BMS\API\V1\Controllers\APIController;
-use BMS\API\V1\Entities\User;
-use BMS\Api\V1\Requests\SignUpRequest;
-use BMS\Security\JWTAuth;
+use Tournament\API\V1\Controllers\APIController;
+use Tournament\API\V1\Entities\User;
+use Tournament\Api\V1\Requests\SignUpRequest;
+use Tournament\Security\JWTAuth;
 use Config;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -20,6 +20,9 @@ class SignUpController extends APIController
 
     public function __construct(EntityManager $em)
     {
+        /**
+         * @todo take a look at https://github.com/tymondesigns/jwt-auth/issues/845
+         */
         $this->em = $em;
         parent::__construct();
     }
@@ -28,7 +31,8 @@ class SignUpController extends APIController
     {
         $this->em->persist(
             $user = User::getInstance()
-                ->setFirstName($request->get('first_name'))
+                ->setFname($request->get('fname'))
+                ->setLname($request->get('lname'))
                 ->setUsername($request->get('username'))
                 ->setPassword($request->get('password'))
                 ->setEmail($request->get('email'))
@@ -37,7 +41,7 @@ class SignUpController extends APIController
         try {
             $this->em->flush();
         } catch (\Exception $ex) {
-            throw new HttpException(500);
+            throw new HttpException(500, $ex->getMessage());
         }
 
         if(!Config::get('boilerplate.sign_up.release_token')) {
@@ -46,7 +50,7 @@ class SignUpController extends APIController
             ], 201);
         }
         $token = $JWTAuth->fromUser($user);
-        
+
         return response()->json([
             'status' => 'ok',
             'token' => $token

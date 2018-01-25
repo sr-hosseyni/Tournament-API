@@ -1,6 +1,6 @@
 <?php
 
-namespace BMS\Http\Middleware;
+namespace Tournament\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
