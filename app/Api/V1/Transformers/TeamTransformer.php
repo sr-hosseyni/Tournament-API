@@ -2,7 +2,6 @@
 
 namespace Tournament\API\V1\Transformers;
 
-use League\Fractal\TransformerAbstract;
 use Tournament\Entities\Team;
 
 /**

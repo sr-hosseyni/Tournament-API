@@ -32,7 +32,7 @@ class Tournament
     /**
      * @var integer
      *
-     * @ORM\Column(name="sequence_no", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="sequence_no", type="integer", nullable=true, unique=false)
      */
     private $sequenceNo;
 
@@ -123,9 +123,16 @@ class Tournament
     /**
      * @var Stage[]
      *
-     * @ORM\OneToMany(targetEntity="Stage", mappedBy="tournament")
+     * @ORM\OneToMany(targetEntity="Stage", mappedBy="tournament", cascade={"persist"})
      */
     private $stages;
+
+    /**
+     * @var Team[]
+     *
+     * @ORM\OneToMany(targetEntity="Team", mappedBy="tournament", cascade={"persist"})
+     */
+    private $teams;
 
     /**
      * Constructor
@@ -133,6 +140,7 @@ class Tournament
     public function __construct()
     {
         $this->stages = new ArrayCollection();
+        $this->teams = new ArrayCollection();
     }
 
     /**
@@ -466,6 +474,7 @@ class Tournament
      */
     public function addStage(Stage $stage)
     {
+        $stage->setTournament($this);
         $this->stages[] = $stage;
 
         return $this;
@@ -489,6 +498,41 @@ class Tournament
     public function getStages()
     {
         return $this->stages;
+    }
+
+    /**
+     * Add team
+     *
+     * @param Team $team
+     *
+     * @return Tournament
+     */
+    public function addTeam(Team $team)
+    {
+        $team->setTournament($this);
+        $this->teams[] = $team;
+
+        return $this;
+    }
+
+    /**
+     * Remove team
+     *
+     * @param Team $team
+     */
+    public function removeTeam(Team $team)
+    {
+        $this->teams->removeElement($team);
+    }
+
+    /**
+     * Get teams
+     *
+     * @return Collection
+     */
+    public function getTeams()
+    {
+        return $this->teams;
     }
 }
 

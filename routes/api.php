@@ -39,12 +39,20 @@ $api->version('v1', function (Router $api) {
         ]);
     });
 
-    $api->resource('team', Tournament\API\V1\Controllers\TeamController::class);
-    $api->resource('match', Tournament\API\V1\Controllers\MatchController::class);
-    $api->resource('match-fact', Tournament\API\V1\Controllers\MatchFactController::class);
-    $api->resource('user', Tournament\API\V1\Controllers\UserController::class);
-    $api->resource('profile', Tournament\API\V1\Controllers\ProfileController::class);
-    $api->resource('invitation', Tournament\API\V1\Controllers\InvitationController::class);
-    $api->resource('tournament', Tournament\API\V1\Controllers\TournamentController::class);
-    $api->resource('invitaion-mail', Tournament\API\V1\Controllers\InvitationMailController::class);
+    $api->resources([
+        'group' => Tournament\API\V1\Controllers\GroupController::class,
+        'stage' => Tournament\API\V1\Controllers\StageController::class,
+        'team' => Tournament\API\V1\Controllers\TeamController::class,
+        'match' => Tournament\API\V1\Controllers\MatchController::class,
+        'match-fact' => Tournament\API\V1\Controllers\MatchFactController::class,
+        'user' => Tournament\API\V1\Controllers\UserController::class,
+        'profile' => Tournament\API\V1\Controllers\ProfileController::class,
+        'invitation' => Tournament\API\V1\Controllers\InvitationController::class,
+        'tournament' => Tournament\API\V1\Controllers\TournamentController::class,
+        'invitaion-mail' => Tournament\API\V1\Controllers\InvitationMailController::class,
+    ]);
+
+    $api->post('group/{groupId}/team', \Tournament\API\V1\Controllers\GroupController::class . '@addTeam');
+    $api->get('generator/{groupId}/matches', \Tournament\API\V1\Controllers\GeneratorController::class . '@matches');
+    $api->get('standing/{groupId}/summary', \Tournament\API\V1\Controllers\StandingController::class . '@summary');
 });

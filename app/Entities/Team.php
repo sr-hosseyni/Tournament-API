@@ -4,6 +4,7 @@ namespace Tournament\Entities;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Tournament\Helpers\HelperTraits\InstanceMaker;
 
 /**
  * Team
@@ -13,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Team
 {
+    use InstanceMaker;
+    
     /**
      * @var integer
      *

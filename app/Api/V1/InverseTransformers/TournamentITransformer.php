@@ -22,11 +22,13 @@ class TournamentITransformer extends BaseInverseTransformer
         $maxSequenceNo = $this->em->getRepository(Tournament::class)
             ->maxSequenceNumber();
 
-        return Tournament::getInstance()
+        return \Tournament\Core\TournamentManager::make(
+            \Tournament\Entities\Struct\TournamentSetting::getInstance()
+        )
             ->setName($tournament['name'])
             ->setPlatform($tournament['platform'])
-            ->setType($tournament['type'])
             ->setLogo($tournament['logo'])
-            ->setSequenceNo($maxSequenceNo + 1);
+            ->setSequenceNo($maxSequenceNo + 1)
+            ->addStage(\Tournament\Entities\Stage::getInstance()->setSequenceNo(0));
     }
 }

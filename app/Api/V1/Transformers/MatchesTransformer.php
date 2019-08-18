@@ -17,7 +17,7 @@ class MatchesTransformer extends BaseTransformer
      * @param Match[]|Collection $matches
      * @return array
      */
-    public function transform(array $matches)
+    public function transform($matches)
     {
         $data = [];
         $matchTransformer = new MatchTransformer();

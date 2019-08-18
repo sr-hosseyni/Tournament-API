@@ -10,7 +10,7 @@ use Tournament\Helpers\HelperTraits\InstanceMaker;
  * Group
  *
  * @ORM\Table(name="groups", indexes={@ORM\Index(name="groups_stage_id_foreign", columns={"stage_id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Tournament\API\V1\Repositories\GroupRepository")
  */
 class Group
 {
@@ -67,11 +67,19 @@ class Group
     private $teams;
 
     /**
+     * @var Match[]
+     *
+     * @ORM\OneToMany(targetEntity="Match", mappedBy="group", cascade={"persist"})
+     */
+    private $matches;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->teams = new ArrayCollection();
+        $this->matches = new ArrayCollection();
     }
 
     /**
@@ -188,6 +196,41 @@ class Group
     public function getTeams()
     {
         return $this->teams;
+    }
+
+    /**
+     * Add match
+     *
+     * @param Match $match
+     *
+     * @return Tournament
+     */
+    public function addMatch(Match $match)
+    {
+        $match->setGroup($this);
+        $this->matches[] = $match;
+
+        return $this;
+    }
+
+    /**
+     * Remove match
+     *
+     * @param Match $match
+     */
+    public function removeMatch(Match $match)
+    {
+        $this->matches->removeElement($match);
+    }
+
+    /**
+     * Get matches
+     *
+     * @return Collection
+     */
+    public function getMatchs()
+    {
+        return $this->matches;
     }
 }
 

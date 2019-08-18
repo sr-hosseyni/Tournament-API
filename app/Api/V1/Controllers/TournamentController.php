@@ -93,7 +93,8 @@ class TournamentController extends APIController
      */
     public function show($id)
     {
-        //
+        $tournament = $this->em->getRepository(\Tournament\Entities\Tournament::class)->find($id);
+        return $this->apiResponseSucces($tournament, new TournamentTransformer());
     }
 
     /**

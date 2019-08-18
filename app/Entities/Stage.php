@@ -1,9 +1,9 @@
 <?php
 namespace Tournament\Entities;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Tournament\Entities\Stage;
 use Tournament\Entities\Team;
 use Tournament\Entities\Tournament;
@@ -16,9 +16,12 @@ use Tournament\Entities\Tournament;
  */
 class Stage
 {
+    use \Tournament\Helpers\HelperTraits\InstanceMaker;
+
     const TYPE_LEAGUE = 1;
     const TYPE_GROUP = 2;
     const TYPE_PLAY_OFF = 3;
+    const TYPE_MANUAL = 4;
 
     /**
      * @var integer
@@ -32,9 +35,9 @@ class Stage
     /**
      * @var integer
      *
-     * @ORM\Column(name="sequence_no", type="integer", precision=0, scale=0, nullable=false, unique=false)
+     * @ORM\Column(name="sequence_no", type="integer", nullable=false, unique=false, options={"default" : 1})
      */
-    private $sequenceNo;
+    private $sequenceNo = 1;
 
     /**
      * @var string
@@ -49,6 +52,13 @@ class Stage
      * @ORM\Column(name="home_and_away", type="boolean", precision=0, scale=0, nullable=false, unique=false)
      */
     private $homeAndAway;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="restrict_team_membership_in_groups", type="boolean", precision=0, scale=0, nullable=false, unique=false)
+     */
+    private $restrictTeamMembershipInGroups = true;
 
     /**
      * @var boolean
@@ -85,11 +95,19 @@ class Stage
     private $teams;
 
     /**
+     * @var Group[]
+     *
+     * @ORM\OneToMany(targetEntity="Group", mappedBy="stage", cascade={"persist"})
+     */
+    private $groups;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->teams = new ArrayCollection();
+        $this->groups = new ArrayCollection();
     }
 
     /**
@@ -172,6 +190,30 @@ class Stage
     public function getHomeAndAway()
     {
         return $this->homeAndAway;
+    }
+
+    /**
+     * Set is restrictTeamMembershipInGroups or not
+     *
+     * @param boolean $restrictTeamMembershipInGroups
+     *
+     * @return Stage
+     */
+    public function setRestrictTeamMembershipInGroups($restrictTeamMembershipInGroups = true)
+    {
+        $this->restrictTeamMembershipInGroups = $restrictTeamMembershipInGroups;
+
+        return $this;
+    }
+
+    /**
+     * Get is restrictTeamMembershipInGroups or not
+     *
+     * @return boolean
+     */
+    public function getRestrictTeamMembershipInGroups()
+    {
+        return $this->restrictTeamMembershipInGroups;
     }
 
     /**
@@ -270,6 +312,40 @@ class Stage
     public function getTeams()
     {
         return $this->teams;
+    }
+    
+    /**
+     * Add group
+     *
+     * @param Group $group
+     *
+     * @return Tournament
+     */
+    public function addGroup(Group $group)
+    {
+        $this->groups[] = $group;
+
+        return $this;
+    }
+
+    /**
+     * Remove group
+     *
+     * @param Group $group
+     */
+    public function removeGroup(Group $group)
+    {
+        $this->groups->removeElement($group);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
     }
 }
 

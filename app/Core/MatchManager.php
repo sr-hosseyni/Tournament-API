@@ -172,6 +172,7 @@ final class MatchManager
 
         $this->match->addPoint(
             MatchPoint::getInstance()
+                ->setMatch($this->match)
                 ->setIsHost(true)
                 ->setTeam($this->match->getHomeTeam())
                 ->setWin($goalsDiff > 0)
@@ -182,6 +183,7 @@ final class MatchManager
 
         $this->match->addPoint(
             MatchPoint::getInstance()
+                ->setMatch($this->match)
                 ->setIsHost(false)
                 ->setTeam($this->match->getAwayTeam())
                 ->setWin($goalsDiff < 0)

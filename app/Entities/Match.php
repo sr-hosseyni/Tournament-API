@@ -56,7 +56,7 @@ class Match
     /**
      * @var Group
      *
-     * @ORM\ManyToOne(targetEntity="Group")
+     * @ORM\ManyToOne(targetEntity="Group", inversedBy="matches")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="group_id", referencedColumnName="id", nullable=true)
      * })

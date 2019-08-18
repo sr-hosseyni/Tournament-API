@@ -21,9 +21,10 @@ class TournamentTransformer extends BaseTransformer
         return [
             'id' => $tournament->getId(),
             'name' => $tournament->getName(),
-            'type' => $tournament->getType(),
+            'is_single_stage' => $tournament->getIsSingleStage(),
             'logo' => $tournament->getLogo(),
-            'platform' => $tournament->getPlatform()
+            'platform' => $tournament->getPlatform(),
+            'stages' => StagesTransformer::getInstance()->transform($tournament->getStages()->toArray())
         ];
     }
 }

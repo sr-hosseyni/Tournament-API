@@ -1,22 +1,34 @@
 <?php
 
 namespace Tournament\API\V1\Controllers;
+//use Stage\Entities\Repositories\Stage\StageRepository;
 
+
+use Doctrine\ORM\EntityManager;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Tournament\Api\V1\InverseTransformers\StageITransformer;
+use Tournament\API\V1\Repositories\StageRepository;
+use Tournament\API\V1\Transformers\StageTransformer;
 
-use Tournament\Http\Requests;
-use Tournament\Http\Controllers\Controller;
-
-class MainController extends Controller
+class StageController extends APIController
 {
+    private $stageRepository;
+    private $em;
+
+    public function __construct(StageRepository $stageRepository, EntityManager $em)
+    {
+        $this->stageRepository = $stageRepository;
+        $this->em = $em;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
     }
 
     /**
@@ -37,7 +49,16 @@ class MainController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $stage = StageITransformer::newInstance($this->em)
+                ->transform($request->all());
+
+            $this->em->persist($stage);
+            $this->em->flush();
+            return $this->apiResponseSucces($stage, new StageTransformer());
+        } catch (\Exception $ex) {
+            return $this->apiResponseError($ex->getMessage());
+        }
     }
 
     /**
@@ -48,7 +69,8 @@ class MainController extends Controller
      */
     public function show($id)
     {
-        //
+        $stage = $this->em->getRepository(\Stage\Entities\Stage::class)->find($id);
+        return $this->apiResponseSucces($stage, new StageTransformer());
     }
 
     /**
